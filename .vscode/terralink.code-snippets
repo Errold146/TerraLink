@@ -1,0 +1,227 @@
+{
+  "React Function Component": {
+    "prefix": "rfc",
+    "body": [
+      "interface ${1:ComponentName}Props {",
+      "  ${2:// props}",
+      "}",
+      "",
+      "export function ${1:ComponentName}({ ${3:props} }: ${1:ComponentName}Props) {",
+      "  return (",
+      "    <div>",
+      "      ${4:// content}",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Create a React Function Component with TypeScript"
+  },
+
+  "React Client Component": {
+    "prefix": "rcc",
+    "body": [
+      "\"use client\"",
+      "",
+      "import { useState } from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  ${2:// props}",
+      "}",
+      "",
+      "export function ${1:ComponentName}({ ${3:props} }: ${1:ComponentName}Props) {",
+      "  const [${4:state}, set${4/(.*)/${1:/capitalize}/}] = useState(${5:initialValue});",
+      "  ",
+      "  return (",
+      "    <div>",
+      "      ${6:// content}",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Create a Client React Component"
+  },
+
+  "Next.js Page Component": {
+    "prefix": "npage",
+    "body": [
+      "export default function ${1:PageName}Page() {",
+      "  return (",
+      "    <div>",
+      "      <h1>${1:PageName}</h1>",
+      "      ${2:// content}",
+      "    </div>",
+      "  );",
+      "}"
+    ],
+    "description": "Create a Next.js Page Component"
+  },
+
+  "Next.js API Route": {
+    "prefix": "napi",
+    "body": [
+      "import { NextRequest, NextResponse } from 'next/server';",
+      "",
+      "export async function ${1|GET,POST,PUT,DELETE,PATCH|}(request: NextRequest) {",
+      "  try {",
+      "    ${2:// logic}",
+      "    ",
+      "    return NextResponse.json({ ${3:data} }, { status: 200 });",
+      "  } catch (error) {",
+      "    console.error('${1} error:', error);",
+      "    return NextResponse.json(",
+      "      { error: '${4:Error message}' },",
+      "      { status: 500 }",
+      "    );",
+      "  }",
+      "}"
+    ],
+    "description": "Create a Next.js API Route"
+  },
+
+  "Prisma Query": {
+    "prefix": "pquery",
+    "body": [
+      "const ${1:result} = await prisma.${2:model}.${3|findMany,findUnique,findFirst,create,update,delete,upsert|}({",
+      "  ${4:// query options}",
+      "});"
+    ],
+    "description": "Prisma database query"
+  },
+
+  "Use State Hook": {
+    "prefix": "ust",
+    "body": [
+      "const [${1:state}, set${1/(.*)/${1:/capitalize}/}] = useState<${2:type}>(${3:initialValue});"
+    ],
+    "description": "useState hook with TypeScript"
+  },
+
+  "Use Effect Hook": {
+    "prefix": "uef",
+    "body": [
+      "useEffect(() => {",
+      "  ${1:// effect logic}",
+      "  ",
+      "  return () => {",
+      "    ${2:// cleanup}",
+      "  };",
+      "}, [${3:dependencies}]);"
+    ],
+    "description": "useEffect hook"
+  },
+
+  "Custom Hook": {
+    "prefix": "uhook",
+    "body": [
+      "import { useState, useEffect } from 'react';",
+      "",
+      "export function use${1:HookName}(${2:params}) {",
+      "  const [${3:state}, set${3/(.*)/${1:/capitalize}/}] = useState(${4:initialValue});",
+      "  ",
+      "  useEffect(() => {",
+      "    ${5:// effect logic}",
+      "  }, [${6:dependencies}]);",
+      "  ",
+      "  return { ${3:state}, set${3/(.*)/${1:/capitalize}/} };",
+      "}"
+    ],
+    "description": "Create a custom hook"
+  },
+
+  "Shadcn Button": {
+    "prefix": "sbtn",
+    "body": [
+      "<Button",
+      "  variant=\"${1|default,destructive,outline,secondary,ghost,link|}\"",
+      "  size=\"${2|default,sm,lg,icon|}\"",
+      "  onClick={${3:handleClick}}",
+      ">",
+      "  ${4:Button Text}",
+      "</Button>"
+    ],
+    "description": "shadcn/ui Button component"
+  },
+
+  "Shadcn Input": {
+    "prefix": "sinput",
+    "body": [
+      "<Input",
+      "  type=\"${1|text,email,password,number,tel,url|}\"",
+      "  placeholder=\"${2:placeholder}\"",
+      "  value={${3:value}}",
+      "  onChange={(e) => ${4:setValue}(e.target.value)}",
+      "  className=\"${5:className}\"",
+      "/>"
+    ],
+    "description": "shadcn/ui Input component"
+  },
+
+  "Try Catch Block": {
+    "prefix": "tryc",
+    "body": [
+      "try {",
+      "  ${1:// code}",
+      "} catch (error) {",
+      "  console.error('${2:Error message}:', error);",
+      "  ${3:// error handling}",
+      "}"
+    ],
+    "description": "Try-catch block"
+  },
+
+  "Async Function": {
+    "prefix": "afn",
+    "body": [
+      "async function ${1:functionName}(${2:params}): Promise<${3:ReturnType}> {",
+      "  try {",
+      "    ${4:// async code}",
+      "    return ${5:result};",
+      "  } catch (error) {",
+      "    console.error('Error in ${1}:', error);",
+      "    throw error;",
+      "  }",
+      "}"
+    ],
+    "description": "Async function with error handling"
+  },
+
+  "Console Log": {
+    "prefix": "clg",
+    "body": [
+      "console.log('${1:label}:', ${2:variable});"
+    ],
+    "description": "Console log with label"
+  },
+
+  "Toast Success": {
+    "prefix": "tsuccess",
+    "body": [
+      "toast.success('${1:Success message}');"
+    ],
+    "description": "Sonner toast success"
+  },
+
+  "Toast Error": {
+    "prefix": "terror",
+    "body": [
+      "toast.error('${1:Error message}');"
+    ],
+    "description": "Sonner toast error"
+  },
+
+  "Import Statement": {
+    "prefix": "imp",
+    "body": [
+      "import { ${2:named} } from '${1:module}';"
+    ],
+    "description": "Import named exports"
+  },
+
+  "Import Default": {
+    "prefix": "impd",
+    "body": [
+      "import ${2:default} from '${1:module}';"
+    ],
+    "description": "Import default export"
+  }
+}
