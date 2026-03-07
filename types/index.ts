@@ -1,3 +1,4 @@
+import { Link, User } from "@/lib/generated/prisma/client";
 import { IconType } from "react-icons";
 
 export type StepsConfigUserType = {
@@ -20,4 +21,11 @@ type InfoUserType = {
     }[]
     avatarUrl: string
     username: string
+}
+
+export type UserContextType = {
+    user: User | null
+    links: Link[] | null
+    isLoading: boolean
+    reloadUser: () => void
 }

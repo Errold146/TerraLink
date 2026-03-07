@@ -15,11 +15,15 @@ TerraLink is a Next.js 16 app for managing and administering links in one place 
 - `app/(routes)/(home)/` — Main home page with multi-step user config flow
 - `app/api/uploadthing/` — UploadThing route handler
 - `app/api/info-user/` — User info API
-- `components/home/` — Step components (StepOne, StepTwo, StepTree, StepFour)
+- `components/home/` — Step components (StepOne, StepTwo, StepTree, StepFour) + LinkListItem
+- `components/ProfilePreview/` — Phone preview components (PhoneProfileHeader, PhoneLinkItem, PhonoPreview)
+- `components/profile/` — Profile editing components
 - `components/shared/` — Shared components (AdminSidebar, Heading, Logo, Spinner)
 - `components/ui/` — shadcn/ui components
 - `context/StepConfigUser/` — React context for step configuration
+- `context/UserContext/` — React context for user data
 - `hooks/useStepConfig.ts` — Custom hook for step config
+- `hooks/useUser.ts` — Custom hook for user data
 - `proxy.ts` — Clerk middleware (acts as middleware.ts)
 
 ## Multi-Step User Config Flow
@@ -48,6 +52,30 @@ Each step saves data in local state, to be sent to the database all at once at t
 - Installed `sonner` package
 - `<Toaster richColors position="top-right" />` added in `app/layout.tsx`
 - Used in StepFour: `toast.success()` on upload complete, `toast.error()` on upload error
+
+## Link Components
+
+### LinkListItem (Main Page)
+- Component for displaying links on the main home page
+- Larger, more readable design with full URL display
+- Uses `<a>` element with `target="_blank"` and `rel="noopener noreferrer"`
+- Smooth transitions (300ms) with subtle hover effects
+- Integrated social platform icons using react-icons
+- Supports dark mode
+
+### PhoneLinkItem (Phone Preview)
+- Compact component for phone preview display
+- Uses `<a>` element with `target="_blank"` and `rel="noopener noreferrer"`
+- Smaller size optimized for mobile preview
+- Icon-based with gradient backgrounds
+- Hover effects with scale transitions
+
+### PhonoPreview
+- Full phone mockup with realistic design
+- Android-style navigation buttons at bottom (back, home, recents)
+- Background image support with gradient overlays
+- Scrollable content area with profile header and links
+- Screen reflection effects for realism
 
 ### StepFour UI
 - Grid of predefined avatar images (from `data/StepFour.data.ts`)

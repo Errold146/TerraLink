@@ -5,7 +5,7 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "explicit"
   },
-  "editor.tabSize": 2,
+  "editor.tabSize": 4,
   "editor.insertSpaces": true,
   "editor.linkedEditing": true,
   "editor.bracketPairColorization.enabled": true,

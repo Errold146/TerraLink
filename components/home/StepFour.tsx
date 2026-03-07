@@ -1,22 +1,22 @@
-import axios from "axios";
-import Image from "next/image";
-import { toast } from "sonner";
-import { useState } from "react";
-import { Plus } from "lucide-react";
 import { UploadButton } from "@/utils/uploadthing";
+import axios from "axios";
+import { Plus } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
 
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import { AlertTriangle } from "lucide-react";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 import { Heading } from "@/components/shared";
 import { dataStepFourImages } from "@/data/StepFour.data";
 import { useStepConfig } from "@/hooks/useStepConfig";
 
 export function StepFour() {
-    
+
     const { infoUser, setInfoUser, nextStep } = useStepConfig()
-    
+
     const [name, setName] = useState('')
     const [error, setError] = useState('')
     const [username, setUsername] = useState('')
@@ -88,7 +88,7 @@ export function StepFour() {
                 }
             `}</style>
 
-            <Heading 
+            <Heading
                 title="Add profile details. "
                 description="Select or upload your profile image."
             />
@@ -101,7 +101,7 @@ export function StepFour() {
                         className={`flex flex-col items-center gap-2 p-1 rounded-full transition-all duration-300 cursor-pointer ${selectedPhoto === src ? 'ring-4 ring-emerald-400 border-emerald-400 shadow-lg' : ''}`}
                         onClick={() => handleImageSelect(src)}
                     >
-                        <Image 
+                        <Image
                             src={src}
                             alt="Profile Avatar"
                             width={300}
@@ -142,7 +142,7 @@ export function StepFour() {
 
             {showUploadPhoto ? (
                 <div className="flex justify-center">
-                    <UploadButton 
+                    <UploadButton
                         appearance={{
                             button: "bg-violet-100 border-2 border-dashed border-violet-300 text-violet-500 font-medium rounded-full px-6 py-3 shadow-sm hover:bg-violet-200 hover:border-violet-400 hover:scale-105 hover:shadow-md transition-all duration-300 cursor-pointer",
                             allowedContent: "text-violet-500 text-xs mt-1",
@@ -171,21 +171,21 @@ export function StepFour() {
                     </div>
                 </div>
             )}
-            
+
 
             <div className="mt-5">
                 <h3 className="text-lg my-3 text-center font-semibold text-violet-600">Add your username.</h3>
 
                 <div className="grid gap-4">
-                    <Input 
-                        placeholder="Name" 
+                    <Input
+                        placeholder="Name"
                         className="w-full border border-emerald-300 placeholder:text-emerald-400"
                         value={name}
                         onChange={e => setName(e.target.value)}
                     />
-                    
-                    <Input 
-                        placeholder="Usename" 
+
+                    <Input
+                        placeholder="Usename"
                         className="w-full border border-emerald-300 placeholder:text-emerald-400"
                         value={username}
                         onChange={e => setUsername(e.target.value)}
@@ -194,9 +194,9 @@ export function StepFour() {
             </div>
 
             <div className="mt-6">
-                <Button 
+                <Button
                     variant={'outline'}
-                    className="w-full text-cyan-600 border border-cyan-300 hover:bg-cyan-400 transition-colors duration-200 cursor-pointer"
+                    className="w-full text-cyan-600 border border-cyan-300 hover:bg-cyan-400 hover:text-cyan-50 transition-colors duration-200 cursor-pointer"
                     onClick={handleContinue}
                 >
                     Continue

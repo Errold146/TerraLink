@@ -7,6 +7,34 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
 ## [Unreleased]
 
+### ✨ Añadido
+- **LinkListItem**: Nuevo componente para mostrar links en la página principal
+  - Diseño más grande y legible que el preview del teléfono
+  - Muestra nombre e URL completa del link
+  - Abre links en nueva pestaña con `target="_blank"`
+  - Transiciones suaves y hover effects sutiles
+  - Iconos de plataformas sociales integrados
+  - Soporte para dark mode
+
+### 🔄 Cambiado
+- **PhoneLinkItem**: Convertido de botón con clipboard a enlace directo
+  - Ahora usa elemento `<a>` en lugar de `<button>`
+  - Abre links en nueva pestaña con `target="_blank"` y `rel="noopener noreferrer"`
+  - Removida funcionalidad de copiar al portapapeles
+  - Optimizado para el preview del teléfono (diseño compacto)
+
+- **PhonoPreview**: Mejorado el diseño de los botones de navegación
+  - Botones de navegación estilo Android en la parte inferior
+  - Agrupados en barra semi-transparente con backdrop blur
+  - Iconos: triángulo (atrás), círculo (home), cuadrado (recientes)
+  - Posicionamiento centrado y estilizado
+
+### 🐛 Corregido
+- **HomePage**: Corregido mapeo de links en la página principal
+  - Solucionado error `infoUser.links.link` que causaba fallos
+  - Ahora itera correctamente sobre el array de links con `.map()`
+  - Muestra todos los links del usuario en lista
+
 ### 🎯 En Progreso
 - Gestión completa de links (CRUD operations)
 - Perfil público del usuario

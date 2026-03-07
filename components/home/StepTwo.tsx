@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { AlertTriangle } from "lucide-react";
+import { useState } from "react";
 
-import { stepTwoData } from "@/data";
-import { Button } from "../ui/button";
-import { useStepConfig } from "@/hooks/useStepConfig";
 import { Heading } from "@/components/shared";
+import { stepTwoData } from "@/data";
+import { useStepConfig } from "@/hooks/useStepConfig";
+import { Button } from "../ui/button";
 
 export function StepTwo() {
     const [error, setError] = useState('');
@@ -41,24 +41,24 @@ export function StepTwo() {
     return (
         <div>
             {error && (
-                <div className="mb-4 flex items-center justify-center gap-3 text-sm font-semibold text-white bg-gradient-to-r from-rose-500 via-amber-400 to-rose-400 border-2 border-rose-300 shadow-lg rounded-xl py-3 px-5 animate-shake">
+                <div className="mb-4 flex items-center justify-center gap-3 text-sm font-semibold text-white bg-linear-to-r from-rose-500 via-amber-400 to-rose-400 border-2 border-rose-300 shadow-lg rounded-xl py-3 px-5 animate-shake">
                     <AlertTriangle className="w-5 h-5 text-white drop-shadow-lg animate-bounce" />
                     <span>{error}</span>
                 </div>
             )}
-            // Animación shake para error
+            {/* // Animación shake para error */}
             <style jsx global>{`
-            @keyframes shake {
-                0% { transform: translateX(0); }
-                20% { transform: translateX(-8px); }
-                40% { transform: translateX(8px); }
-                60% { transform: translateX(-6px); }
-                80% { transform: translateX(6px); }
-                100% { transform: translateX(0); }
-            }
-            .animate-shake {
-                animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
-            }
+                @keyframes shake {
+                    0% { transform: translateX(0); }
+                    20% { transform: translateX(-8px); }
+                    40% { transform: translateX(8px); }
+                    60% { transform: translateX(-6px); }
+                    80% { transform: translateX(6px); }
+                    100% { transform: translateX(0); }
+                }
+                .animate-shake {
+                    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+                }
             `}</style>
             <Heading
                 title="Which platforms are you on?"
@@ -67,7 +67,7 @@ export function StepTwo() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
                 {stepTwoData.map(item => (
-                    <div 
+                    <div
                         key={item.name}
                         className={`flex flex-col gap-1 items-center rounded-lg py-3 hover:bg-emerald-100 hover:shadow-md border border-emerald-300      transition-colors duration-300 cursor-pointer
                             ${selectedPlatform.includes(item.name) ? "bg-emerald-100 border-violet-400" : ''}
@@ -81,7 +81,7 @@ export function StepTwo() {
             </div>
 
             <div className="mt-6">
-                <Button 
+                <Button
                     variant={'outline'}
                     className="w-full text-cyan-600 border border-cyan-300 hover:bg-cyan-400 hover:text-cyan-50 transition-colors duration-300 cursor-pointer"
                     onClick={handleContinue}

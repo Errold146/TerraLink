@@ -57,6 +57,18 @@
   - Paso 4: Sube tu foto de perfil y completa tu información (nombre y username)
 
 - **Gestión de Enlaces**: Crea, edita y organiza tus enlaces
+  - Lista de enlaces interactiva con iconos de plataformas sociales
+  - Enlaces que abren en nueva pestaña (`target="_blank"`)
+  - Efectos hover sutiles y transiciones suaves
+  - Soporte para múltiples plataformas (Instagram, YouTube, GitHub, etc.)
+
+- **Preview de Teléfono**: Vista previa en tiempo real estilo smartphone
+  - Diseño realista de teléfono con notch y bordes redondeados
+  - Botones de navegación estilo Android (atrás, home, recientes)
+  - Fondo personalizable con gradientes y overlays
+  - Scrollable content con todos tus enlaces
+  - Logo de TerraLink en la parte inferior
+
 - **Perfil Personalizado**: Avatares predefinidos o carga tu propia imagen
 - **Dashboard Admin**: Sidebar administrativo para gestionar tu contenido
 
@@ -145,6 +157,19 @@ terra-link/
 │   │   ├── StepFour.tsx             # Paso 4: Avatar, nombre y username
 │   │   ├── Summary.tsx              # Resumen y confirmación final
 │   │   ├── LinkProfile.tsx          # Perfil de enlaces del usuario
+│   │   ├── LinkListItem.tsx         # 🔗 Item de link para lista principal
+│   │   └── index.ts                 # Barrel export
+│   │
+│   ├── 📂 profile/                  # Componentes de perfil
+│   │   ├── ProfileInfo.tsx          # Información del perfil
+│   │   ├── ProfileImage.tsx         # Imagen de perfil
+│   │   └── index.ts                 # Barrel export
+│   │
+│   ├── 📂 ProfilePreview/           # Componentes de preview mobile
+│   │   ├── PhonoPreview.tsx         # 📱 Preview de teléfono completo
+│   │   ├── PhoneLinkItem.tsx        # 🔗 Item de link estilo móvil
+│   │   ├── PhoneProfileHeader.tsx   # Encabezado del perfil móvil
+│   │   ├── ProfilePreview.tsx       # Contenedor de preview
 │   │   └── index.ts                 # Barrel export
 │   │
 │   ├── 📂 shared/                   # Componentes compartidos
