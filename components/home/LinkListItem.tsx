@@ -30,7 +30,7 @@ export function LinkListItem({ link }: LinkListItemProps) {
             href={link.link || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-300 rounded-xl p-4 shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700 group"
+            className="block w-full bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-300 rounded-2xl p-4 shadow-md hover:shadow-lg border border-slate-200 dark:border-slate-700 group"
         >
             <div className="flex items-center gap-4">
                 {/* Icon */}

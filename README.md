@@ -56,11 +56,26 @@
   - Paso 3: Ingresa los enlaces o usernames de tus plataformas
   - Paso 4: Sube tu foto de perfil y completa tu información (nombre y username)
 
+- **Gestión de Email**: Sistema completo para email de contacto
+  - Página dedicada `/email` para gestionar tu email
+  - Validación de formato en tiempo real
+  - Verificación de emails duplicados
+  - Visible en todos tus perfiles públicos
+  - Links mailto: clickeables para contacto directo
+  - Eliminar email cuando lo desees
+
 - **Gestión de Enlaces**: Crea, edita y organiza tus enlaces
   - Lista de enlaces interactiva con iconos de plataformas sociales
   - Enlaces que abren en nueva pestaña (`target="_blank"`)
   - Efectos hover sutiles y transiciones suaves
   - Soporte para múltiples plataformas (Instagram, YouTube, GitHub, etc.)
+  - Flecha indicadora en cada tarjeta
+
+- **Compartir Perfil**: Botón de compartir con información completa
+  - Copiar URL de perfil al portapapeles con un click
+  - Vista previa de perfil en dialog elegante
+  - Feedback visual con toast notifications
+  - Muestra avatar, username, name, bio y email
 
 - **Preview de Teléfono**: Vista previa en tiempo real estilo smartphone
   - Diseño realista de teléfono con notch y bordes redondeados
@@ -68,6 +83,13 @@
   - Fondo personalizable con gradientes y overlays
   - Scrollable content con todos tus enlaces
   - Logo de TerraLink en la parte inferior
+  - Botón de compartir integrado
+
+- **Página 404 Elegante**: Error handling profesional
+  - Diseño moderno con gradientes animados
+  - Información clara sobre posibles causas
+  - Colores consistentes con el proyecto
+  - Responsive para móvil y desktop
 
 - **Perfil Personalizado**: Avatares predefinidos o carga tu propia imagen
 - **Dashboard Admin**: Sidebar administrativo para gestionar tu contenido
@@ -563,6 +585,49 @@ Actualiza la información del usuario.
   "typeUser": "personal"
 }
 ```
+
+#### `PUT /api/user/email`
+Actualiza o establece el email del usuario.
+
+**Body:**
+```json
+{
+  "email": "newemail@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "status": "success",
+  "user": {
+    "id": "uuid",
+    "email": "newemail@example.com",
+    "name": "John Doe",
+    "username": "johndoe"
+  }
+}
+```
+
+**Errores:**
+- 401: No autenticado
+- 400: Email inválido o duplicado
+- 500: Error del servidor
+
+#### `DELETE /api/user/email`
+Elimina el email del usuario actual.
+
+**Response:**
+```json
+{
+  "status": "success",
+  "message": "Email eliminado correctamente"
+}
+```
+
+**Errores:**
+- 401: No autenticado
+- 500: Error del servidor
 
 ### UploadThing Endpoints
 

@@ -44,6 +44,13 @@ export function PhoneLinkItem({ link }: PhoneLinkItemProps) {
                         {link.name || "Link"}
                     </p>
                 </div>
+
+                {/* Arrow Icon */}
+                <div className="text-slate-400 group-hover:text-violet-500 group-hover:translate-x-1 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
             </div>
         </a>
     )

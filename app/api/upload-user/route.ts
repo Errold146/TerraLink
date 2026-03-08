@@ -12,6 +12,26 @@ export async function PATCH(req: NextRequest) {
 
         const data = await req.json()
 
+        // Validate email if provided
+        if (data.email && data.email.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            if (!emailRegex.test(data.email)) {
+                return NextResponse.json({ message: "Invalid email format" }, { status: 400 });
+            }
+
+            // Check if email already exists for another user
+            const existingUser = await db.user.findFirst({
+                where: {
+                    email: data.email.trim(),
+                    NOT: { id: userId }
+                }
+            });
+
+            if (existingUser) {
+                return NextResponse.json({ message: "Email already in use" }, { status: 409 });
+            }
+        }
+
         // Get current user to check for existing images
         const currentUser = await db.user.findUnique({
             where: { id: userId }

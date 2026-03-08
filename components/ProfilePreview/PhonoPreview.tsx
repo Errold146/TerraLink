@@ -1,5 +1,6 @@
 import { PhoneLinkItem, PhoneProfileHeader } from "@/components/ProfilePreview";
 import { Logo } from "@/components/shared";
+import { MoreInfoProfile } from "@/components/user";
 import { useUserInfo } from "@/hooks/useUser";
 import { Circle, Square, Triangle } from "lucide-react";
 import Image from "next/image";
@@ -43,6 +44,13 @@ export function PhonoPreview() {
 
                         {/* Content Container with Scroll */}
                         <div className="relative h-full overflow-y-auto scrollbar-hide">
+                            {/* More Info Button - Top Right */}
+                            {user && links && (
+                                <div className="absolute top-4 right-4 z-20 scale-75">
+                                    <MoreInfoProfile user={{ ...user, links: links }} inPhonePreview={true} />
+                                </div>
+                            )}
+
                             {/* Profile Header */}
                             <PhoneProfileHeader user={user} />
 

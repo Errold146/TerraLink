@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 import { Heading } from "@/components/shared";
-import { dataStepFourImages } from "@/data/StepFour.data";
+import { dataStepFourImages } from "@/data";
 import { useStepConfig } from "@/hooks/useStepConfig";
 
 export function StepFour() {

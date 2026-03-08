@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Ellipsis, ImagePlus } from "lucide-react";
+import { Ellipsis, ImagePlus, Link } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -10,6 +10,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 
 import { useUserInfo } from "@/hooks/useUser";
 import { UploadButton } from "@/utils/uploadthing";
+import NextLink from 'next/link';
 
 interface Props {
     onReload: React.Dispatch<React.SetStateAction<boolean>>
@@ -45,20 +46,46 @@ export function EditBackground({onReload}: Props) {
             <Dialog open={showDialog} onOpenChange={setShowDialog}>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <div className="p-2 bg-violet-200 hover:bg-violet-300 border border-violet-300 hover:shadow-md transition-all duration-300 rounded-full">
+                        <div className="p-2 bg-violet-200 hover:bg-violet-300 border border-violet-300 hover:shadow-md transition-all duration-300 rounded-full cursor-pointer">
                             <Ellipsis fill="black" />
                         </div>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className="w-64 p-2">
                         <DropdownMenuGroup>
-
-                            <DropdownMenuItem>
-                                <DialogTrigger>
-                                    <div className="flex gap-1 items-center">
-                                        <ImagePlus className="w-4 h-4" />
-                                        Edit or add background image
+                            <DropdownMenuItem asChild>
+                                <DialogTrigger className="w-full">
+                                    <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-violet-50 dark:hover:bg-violet-900/20 transition-colors cursor-pointer w-full">
+                                        <div className="w-10 h-10 rounded-lg bg-linear-to-br from-violet-500 to-purple-600 flex items-center justify-center shrink-0">
+                                            <ImagePlus className="w-5 h-5 text-white" />
+                                        </div>
+                                        <div className="flex-1 text-left">
+                                            <p className="font-semibold text-sm text-slate-800 dark:text-slate-100">
+                                                Edit Background
+                                            </p>
+                                            <p className="text-xs text-slate-500 dark:text-slate-400">
+                                                Change cover image
+                                            </p>
+                                        </div>
                                     </div>
                                 </DialogTrigger>
+                            </DropdownMenuItem>
+
+                            <DropdownMenuItem asChild>
+                                <NextLink href="/links" className="w-full">
+                                    <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-cyan-50 dark:hover:bg-cyan-900/20 transition-colors cursor-pointer w-full">
+                                        <div className="w-10 h-10 rounded-lg bg-linear-to-br from-cyan-500 to-cyan-600 flex items-center justify-center shrink-0">
+                                            <Link className="w-5 h-5 text-white" />
+                                        </div>
+                                        <div className="flex-1 text-left">
+                                            <p className="font-semibold text-sm text-slate-800 dark:text-slate-100">
+                                                Manage Links
+                                            </p>
+                                            <p className="text-xs text-slate-500 dark:text-slate-400">
+                                                Add or edit your links
+                                            </p>
+                                        </div>
+                                    </div>
+                                </NextLink>
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                     </DropdownMenuContent>

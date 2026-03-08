@@ -25,7 +25,8 @@ export function FormInfoUser({ setOpenDialog }: Props) {
         defaultValues: {
             username: user?.username || '',
             name: user?.name || '',
-            bio: user?.bio || ''
+            bio: user?.bio || '',
+            email: user?.email || ''
         }
     })
 
@@ -34,7 +35,8 @@ export function FormInfoUser({ setOpenDialog }: Props) {
             await axios.patch("/api/upload-user", {
                 name: values.name,
                 username: values.username,
-                bio: values.bio
+                bio: values.bio,
+                email: values.email
             })
 
             setOpenDialog(false)
@@ -69,6 +71,19 @@ export function FormInfoUser({ setOpenDialog }: Props) {
                             placeholder="Example: evil_rabbit"
                             {...form.register("username")}
                         />
+                    </Field>
+                    <Field>
+                        <FieldLabel htmlFor="email">Email</FieldLabel>
+                        <Input
+                            id="email"
+                            type="email"
+                            autoComplete="off"
+                            placeholder="your.email@example.com"
+                            {...form.register("email")}
+                        />
+                        {form.formState.errors.email && (
+                            <p className="text-xs text-red-500 mt-1">{form.formState.errors.email.message}</p>
+                        )}
                     </Field>
                     <Field>
                         <FieldLabel htmlFor="bio">Bio</FieldLabel>

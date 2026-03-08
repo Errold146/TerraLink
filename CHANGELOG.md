@@ -8,6 +8,128 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 ## [Unreleased]
 
 ### ✨ Añadido
+
+#### Sistema de Email (CRUD Completo)
+- **Página de Email (`/email`)**: Gestión completa de email de contacto
+  - Formulario elegante con validación en tiempo real
+  - Guardar y actualizar email con validación de formato
+  - Eliminar email con botón discreto
+  - Validación de emails duplicados
+  - Notificaciones toast para feedback
+  - Tarjeta informativa sobre el uso del email
+  - Diseño responsive con colores del proyecto (violet/purple/emerald)
+
+- **API de Email (`/api/user/email`)**: Endpoints REST
+  - **PUT**: Actualizar email con validaciones (formato, duplicados, autenticación)
+  - **DELETE**: Eliminar email del perfil
+  - Manejo robusto de errores
+
+- **Integración de Email enPerfiles**:
+  - **BlockInfo**: Muestra email debajo del username en el home
+  - **FormInfoUser**: Campo de email para editar junto con username, name y bio
+  - **UserProfile**: Email clickeable con efecto hover y link mailto:
+  - **MoreInfoProfile**: Email en la tarjeta de compartir
+  - **PhoneProfileHeader**: Email en el preview del celular
+  - Iconografía coherente con Lucide Mail icon
+
+#### Página 404 Global
+- **not-found.tsx**: Página de error 404 elegante y moderna
+  - Número 404 grande con gradiente animado
+  - Efecto de resplandor pulsante
+  - Puntos decorativos con animación de rebote
+  - Tarjeta informativa con posibles razones del error
+  - Logo de TerraLink al final
+  - Diseño responsive para móvil y desktop
+  - Usa los colores predefinidos del proyecto
+  - Se muestra para URLs inexistentes y usuarios no encontrados
+
+#### Componente MoreInfoProfile
+- **Dialog de Compartir**: Botón de tres puntos (ellipsis) con información completa
+  - Tarjeta elegante con avatar, username, name, bio y email
+  - Botón de copiar URL al portapapeles
+  - Feedback visual con cambio de ícono (Copy → Check)
+  - Toast notification al copiar
+  - Links del usuario listados
+  - Posicionamiento inteligente:
+    - En home: esquina superior derecha cerca del celular
+    - En perfil público: centrado como modal
+  - Logo de TerraLink integrado
+
+### 🔄 Cambiado
+
+- **FormInfoUser**: Agregado campo de email con validación
+  - Validación de formato de email con zod
+  - Mensajes de error en tiempo real
+  - Actualización vía `/api/upload-user`
+
+- **BlockInfo**: Actualizado para mostrar email
+  - Email visible debajo del bio
+  - Click para editar perfil completo
+
+- **API `/api/upload-user`**: Extendida para soportar email
+  - Validación de formato de email
+  - Verificación de emails duplicados
+  - Sanitización de inputs
+
+- **UserProfile**: Mejorado con email clickeable
+  - Link mailto: automático
+  - Efectos hover elegantes
+  - Diseño responsive
+
+### 🐛 Corregido
+
+#### Error de Hidratación en React
+- **HomeLayout**: Agregado `"use client"` para evitar mismatch
+  - Problema: Radix UI generaba IDs diferentes en SSR vs cliente
+  - Solución: Convertir layout a Client Component
+  - AdminSidebar con DropdownMenu ahora funciona sin errores
+
+- **useIsMobile Hook**: Corregido estado inicial
+  - Cambió de `undefined` a `false` para consistencia
+  - Previene errores de hidratación
+
+- **AdminSidebar**: Renderizado condicional del DropdownMenu
+  - Detecta montaje en cliente con `useEffect`
+  - Muestra botón simple en SSR, DropdownMenu en cliente
+  - Elimina errores de consola sin afectar UX
+
+#### Manejo de Errores en Perfil de Usuario
+- **UserPage ([user]/page.tsx)**: Mejorado manejo de 404
+  - Diferencia entre usuario no encontrado (404) y errores reales (500)
+  - No lanza errores en consola para usuarios inexistentes
+  - Redirige a página 404 limpiamente
+  - Solo registra errores verdaderos (red, servidor)
+
+### 🎨 Mejoras de Diseño
+
+- **Consistencia Visual**: Email integrado con estilo coherente en todos los componentes
+- **Animaciones**: Gradiente animado en página 404
+- **Glassmorphism**: Efectos de vidrio esmerilado en tarjetas y fondos
+- **Responsive**: Todos los nuevos componentes optimizados para móvil
+
+---
+
+### 📝 Notas Técnicas
+
+#### Email System
+- Campo `email` en modelo User de Prisma (String?, unique)
+- Validación en frontend y backend
+- Links mailto: para contacto directo
+- Manejo de emails duplicados
+
+#### 404 Page
+- Animación CSS custom para gradiente
+- Utiliza layout.tsx root para diseño limpio
+- No requiere navegación manual
+
+#### Hydration Fix
+- Componentes que usan Radix UI deben ser Client Components
+- useEffect para detectar montaje en cliente
+- Renderizado condicional basado en estado mounted
+
+---
+
+### ✨ Añadido (Previo)
 - **LinkListItem**: Nuevo componente para mostrar links en la página principal
   - Diseño más grande y legible que el preview del teléfono
   - Muestra nombre e URL completa del link
@@ -16,20 +138,22 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
   - Iconos de plataformas sociales integrados
   - Soporte para dark mode
 
-### 🔄 Cambiado
+### 🔄 Cambiado (Previo)
 - **PhoneLinkItem**: Convertido de botón con clipboard a enlace directo
   - Ahora usa elemento `<a>` en lugar de `<button>`
   - Abre links en nueva pestaña con `target="_blank"` y `rel="noopener noreferrer"`
   - Removida funcionalidad de copiar al portapapeles
   - Optimizado para el preview del teléfono (diseño compacto)
+  - Agregada flecha ">" al final de cada tarjeta
 
 - **PhonoPreview**: Mejorado el diseño de los botones de navegación
   - Botones de navegación estilo Android en la parte inferior
   - Agrupados en barra semi-transparente con backdrop blur
   - Iconos: triángulo (atrás), círculo (home), cuadrado (recientes)
   - Posicionamiento centrado y estilizado
+  - Integrado botón MoreInfoProfile
 
-### 🐛 Corregido
+### 🐛 Corregido (Previo)
 - **HomePage**: Corregido mapeo de links en la página principal
   - Solucionado error `infoUser.links.link` que causaba fallos
   - Ahora itera correctamente sobre el array de links con `.map()`
@@ -37,8 +161,9 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
 ### 🎯 En Progreso
 - Gestión completa de links (CRUD operations)
-- Perfil público del usuario
+- Perfil público del usuario mejorado
 - Drag & drop para reordenar links
+- Sistema de analytics
 
 ---
 

@@ -1,3 +1,5 @@
+"use client"
+
 import { AdminSidebar } from "@/components/shared";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
