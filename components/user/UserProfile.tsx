@@ -5,7 +5,7 @@ import { IconType } from "react-icons";
 import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLink, FaLinkedin, FaPinterest, FaSnapchat, FaTelegram, FaThreads, FaTiktok, FaUser, FaWhatsapp, FaXTwitter, FaYoutube } from "react-icons/fa6";
 
 import { Logo } from "@/components/shared";
-import { MoreInfoProfile } from "@/components/user";
+import { CreateAccountBanner, MoreInfoProfile } from "@/components/user";
 
 interface Props {
     user: User & { links: Link[] }
@@ -157,11 +157,14 @@ export function UserProfile({ user }: Props) {
                         </div>
 
                         {/* TerraLink Logo at Bottom */}
-                        <div className="flex justify-center pb-8 pt-6">
+                        <div className="flex justify-center pb-4 pt-6">
                             <div className="bg-black/30 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg hover:bg-black/40 transition-colors">
                                 <Logo />
                             </div>
                         </div>
+
+                        {/* Create Account Banner - Footer Style */}
+                        <CreateAccountBanner />
                     </div>
                 </div>
             </div>
