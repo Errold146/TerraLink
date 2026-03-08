@@ -164,7 +164,7 @@ export function UserProfile({ user }: Props) {
                         </div>
 
                         {/* Create Account Banner - Footer Style */}
-                        <CreateAccountBanner />
+                        <CreateAccountBanner profileUserId={user.id} />
                     </div>
                 </div>
             </div>

@@ -4,11 +4,15 @@ import { useAuth } from "@clerk/nextjs"
 import { Sparkles } from "lucide-react"
 import Link from "next/link"
 
-export function CreateAccountBanner() {
+interface CreateAccountBannerProps {
+    profileUserId: string
+}
+
+export function CreateAccountBanner({ profileUserId }: CreateAccountBannerProps) {
     const { userId } = useAuth()
 
-    // Don't show banner if user is already authenticated
-    if (userId) return null
+    // Don't show banner if viewing your own profile
+    if (userId && userId === profileUserId) return null
 
     return (
         <div className="w-full px-4 py-6 mt-4">
